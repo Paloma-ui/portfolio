@@ -1,0 +1,85 @@
+/* INDEX */
+
+/* Grand cadre principal */
+.main-container1 {
+    width: 90%;
+    padding: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+   
+}
+/* Cadre de la photo + vinyle */
+.hero-section1 {
+    position: relative;
+    width: 70vw;          /* plus large, proportionnel à l'écran */
+    max-width: 850px;
+    height: 450px;
+    margin-bottom: 20px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Bloc contenant le PNG (photo+vinyle) */
+.photo-box1 {
+    width: 600px;         /* plus grand */
+    height: 420px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-box1 img {
+    width: 110%;          /* agrandit le PNG */
+    height: auto;
+}
+
+/* Bloc des titres */
+.text-section1 {
+    text-align: center;
+    width: 90%;
+    margin-top: -10px;
+    padding: 10px 0;
+}
+
+.title1 {
+    font-size: 72px;      /* titre plus grand */
+    color: #7e2720;
+    margin: 10px 0;
+    letter-spacing: 8px;
+}
+
+.subtitle1 {
+    font-size: 24px;
+    color: #190705;
+    margin: 0;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* Bloc du bouton play */
+.footer-section1 {
+    margin-top: 30px;
+    padding: 10px 0;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-button1 {
+    width: 0;
+    height: 0;
+    border-top: 24px solid transparent;
+    border-bottom: 24px solid transparent;
+    border-left: 36px solid #7e2720;
+    border-radius: 4px;
+    cursor: pointer;
+ 
+}
