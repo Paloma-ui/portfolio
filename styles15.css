@@ -1,0 +1,80 @@
+/* AFFICHES 1 - ENCORE PLUS GROS + CENTRE */
+body.affiches115 {
+    background-color: #f1ede4;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+/* Cadre principal TRÈS LARGE */
+.main-container15 {
+    border: 1px solid black;
+    width: 1400px;  /* +200px supplémentaire */
+    padding: 40px;  /* +10px */
+    display: flex;
+    flex-direction: column;
+    gap: 40px;  /* +10px */
+}
+
+/* Grille affiches ÉNORME */
+.posters-grid15 {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;  /* +10px */
+    gap: 35px;  /* +10px */
+}
+
+.poster-box15 {
+    border: 1px solid black;
+    flex: 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;  /* +5px */
+}
+
+.poster-box15 img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Contrôles GÉANTS */
+.player-footer15 {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    padding: 20px;  /* +5px */
+}
+
+.controls-wrapper15 {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding: 20px 80px;  /* +20px horizontal */
+    gap: 50px;  /* +10px */
+}
+
+.control-btn15 {
+    font-size: 70px;  /* +15px */
+    color: #8b3a3a;
+    cursor: pointer;
+    user-select: none;
+    cursor: pointer;
+}
+
+.pause15 {
+    font-size: 85px;  /* +20px */
+    font-weight: bold;
+}
+
+.divider15 {
+    border-left: 4px solid #8b3a3a;  /* +1px */
+    height: 70px;  /* +15px */
+}

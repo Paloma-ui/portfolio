@@ -1,0 +1,165 @@
+/* CODAGE */
+
+.body .codage7 {
+    background-color: #f1ede4;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Grand cadre principal */
+.main-containercodage7 {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-block: -12px;
+    margin-left: -10px;
+    margin-right: -8px;
+}
+
+/* 1. Bannière du haut */
+.banner-boxcodage7 {
+    border: 1px solid black;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-imgcodage7 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-titlecodage7 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #f1ede4;
+    font-size: 60px;
+    margin: 0;
+    letter-spacing: 5px;
+}
+
+/* 2. Barre d'interaction */
+.interaction-barcodage7 {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 15px;
+}
+
+.user-info-boxcodage7 {
+    border: 1px solid black;
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+}
+
+.avatar-boxcodage7 {
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    background-color: #5d6679;
+}
+
+.like-statuscodage7 {
+    border: 1px solid black;
+    font-size: 10px;
+    padding: 2px 5px;
+}
+
+.subscribe-boxcodage7 {
+    border: 1px solid black;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.sub-btncodage7 {
+    border: 1px solid #8b3a3a;
+    border-radius: 20px;
+    padding: 5px 30px;
+    color: #8b3a3a;
+    font-size: 14px;
+}
+
+.nav-btnscodage7 {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-returncodage7, .btn-playcodage7 {
+    border: 1px solid black;
+    padding: 5px 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* 3. Section de contenu (Bas) */
+.bottom-contentcodage7 {
+    border: 1px solid black;
+    display: flex;
+    min-height: 304px;
+    padding: 140px;
+    gap: 25px;
+}
+
+.left-panelcodage7 {
+    border: 1px solid black;
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 34px;
+    margin-left: -91px;
+}
+
+.section-title-boxcodage7 {
+    border: 1px solid black;
+    padding: 20px;
+    width: 80%;
+}
+
+.section-title-boxcodage7 h2 {
+    color: #8b3a3a;
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+}
+
+.right-panelcodage7 {
+    border: 1px solid black;
+    flex: 1;
+    padding: 25px;
+    margin-block: 3px;
+}
+
+.video-suggestioncodage7 {
+    border: 1px solid black;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.miniature-boxcodage7 {
+    border: 1px solid black;
+    width: 80px;
+    height: 60px;
+    background-color: #5d6679;
+}
+
+.video-infocodage7 h3 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.video-infocodage7 p {
+    font-size: 10px;
+    color: #8b3a3a;
+    margin: 5px 0 0 0;
+}

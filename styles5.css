@@ -1,0 +1,108 @@
+/* COMPÉTENCES */
+
+/* Fond de page */
+.body .compétences5 {
+    background-color: #f1ede4;
+    font-family: 'Arial Black', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Grand cadre global */
+.main-containercompétences5 {
+    border: 1px solid black;
+    padding: 116px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Titre */
+.header-boxcompétences5 {
+    border: 1px solid black;
+    width: 80%;
+    text-align: center;
+    margin-bottom: 138px;
+    margin-top: -73px;
+}
+
+.main-titlecompétences5 {
+    color: #8b3a3a;
+    font-size: 79px;
+    letter-spacing: 12px;
+    margin: 20px 0;
+    text-transform: uppercase;
+}
+
+/* La Grille - C'est ici que l'on définit les 3 colonnes */
+.grid-containercompétences5 {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+    grid-template-rows: repeat(4, auto);   /* 4 lignes */
+    gap: 15px;
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+/* Chaque cellule de la grille */
+.cellcompétences5 {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+/* La carte style "Lecteur" */
+.skill-cardcompétences5 {
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 60px;
+}
+
+/* Le petit carré bleu-gris */
+.square-iconcompétences5 {
+    background-color: #5d6679;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/* Texte et étoiles */
+.contentcompétences5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.skill-namecompétences5 {
+    font-size: 10px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 2px;
+}
+
+.starscompétences5 {
+    color: #8b3a3a;
+    font-size: 22px;
+    line-height: 1;
+}
+
+/* Pied de page */
+.footer-boxcompétences5 {
+    border: 1px solid black;
+    margin-top: 30px;
+    padding: 5px 15px;
+}
+
+.back-buttoncompétences5 {
+    font-size: 30px;
+    cursor: pointer;
+}

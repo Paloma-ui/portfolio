@@ -1,0 +1,151 @@
+/* SAÉ 103 */
+
+.body .sae10313 {
+    background-color: #f1ede4;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Grand conteneur principal */
+.main-outer-container13 {
+    border: 1px solid black;
+    width: 1100px;
+    padding: 20px;
+}
+
+.content-flex-wrapper13 {
+    display: flex;
+    gap: 20px;
+    border: 1px solid black;
+}
+
+/* Colonne Gauche - Style Lecteur Audio */
+.left-player-panel13 {
+    border: 1px solid black;
+    background-color: #5d6679;
+    color: white;
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-headersae103 {
+    border: 1px solid black;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.player-header13 h1 { margin: 0; font-size: 35px; }
+.author13 { margin: 0; font-size: 14px; }
+
+.player-description13 {
+    border: 1px solid black;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    font-family: Arial, sans-serif;
+}
+
+.audio-controls-box13 {
+    border: 1px solid black;
+    margin-top: auto;
+}
+
+.utility-icons13 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.progress-section13 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.progress-bar-bg13 {
+    border: 1px solid black;
+    height: 6px;
+    background-color: #333;
+    flex-grow: 1;
+}
+
+.progress-bar-fillsae103 {
+    background-color: #8b3a3a;
+    width: 45%;
+    height: 100%;
+}
+
+.play-action-boxsae103 {
+    display: flex;
+    justify-content: center;
+}
+
+.play-button-circle13 {
+    border: 1px solid black;
+    background-color: white;
+    color: #5d6679;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Colonne Droite - Style Visuel avec 2 Vinyles */
+.right-visual-panel13 {
+    border: 1px solid black;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1ede4;
+    gap: 20px; /* Espace entre les deux vinyles */
+    padding: 20px 0;
+}
+
+.vinyle-display-box13 {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.vinyle13 {
+    position: relative;
+    width: 320px; 
+    height: 220px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cover-image13 {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cover-overlay13 {
+    display: none; /* Masqué pour laisser place au PNG */
+}
+
+.back-nav-box13 {
+    border: 1px solid black;
+    margin-top: auto;
+    align-self: flex-end;
+    margin-right: 20px;
+}
+
+.back-icon-btn13 {
+    font-size: 40px;
+    cursor: pointer;
+}

@@ -1,0 +1,228 @@
+/* ACCUEIL */
+
+/* Arrière-plan et centrage global */
+.body.accueil2 {
+    background-color: #f0e6d3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+/* Cadre extérieur */
+.main-frame2 {
+  
+    min-height: 80vh;              /* laisse de l’espace pour bien centrer */
+    padding: 60px 40px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;       /* centre verticalement le contenu */
+    align-items: center;
+}
+
+/* Titre BIENVENUE (plus de header-box) */
+.welcome-text2 {
+    color: #8b3a3a;
+    font-size: 4.5rem;
+    letter-spacing: 12px;
+    margin: 0 0 40px 0;
+    text-align: center;
+}
+
+/* Conteneur des 3 colonnes */
+.cards-container2 {
+    display: flex;
+    justify-content: center;       /* centre l’ensemble des cartes */
+    align-items: stretch;          /* même hauteur pour les colonnes */
+    width: 100%;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* Colonne individuelle (cadre extérieur de chaque bloc) */
+.card-column2 {
+    
+    flex: 1;                     /* colonnes de largeur égale */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Carte style lecteur MP3 (plus grosse et étirée) */
+.music-card2 {
+    background-color: #5f667e;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 320px;              /* plus large */
+    height: 460px;                 /* plus longue */
+    padding: 35px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* Écran blanc dans la carte (allongé) */
+.screen2 {
+    background-color: #f0ede4;
+    width: 95%;
+    height: 290px;                 /* écran plus étiré */
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8b3a3a;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+/* Section contrôles */
+.controls2 {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.line2 {
+    border-top: 2px solid #222;
+    width: 85%;
+    margin: 10px auto;
+}
+
+.icons2 {
+    font-size: 1.6rem;
+    color: #222;
+}
+
+/* Pied de page / Bouton retour */
+.footer-box2 {
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+
+.back-button2 {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+/* COORDONNÉES - @ À CÔTÉ MAIL + GROS + CENTRE */
+body.coordonnees3 {
+    background-color: #f0ede4;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    color: #8b3a3a;
+}
+
+/* Grand conteneur principal */
+.main-containercoordonnees3 {
+    border: 1px solid black;
+    width: 90%;
+    max-width: 1200px;
+    padding: 450px 550px;
+    position: relative;
+}
+
+/* Bloc contenu */
+.content-boxcoordonnees3 {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 60px;
+    margin-bottom: 80px;
+}
+
+/* Colonne gauche */
+.info-leftcoordonnees3 {
+    border: 1px solid black;
+    flex: 1;
+    padding: 35px;
+}
+
+.contact-itemcoordonnees3 {
+    margin: 25px 0;
+    font-size: 1.5rem;
+    display: flex;  /* NOUVEAU : aligne icône + texte sur 1 ligne */
+    align-items: center;  /* Centre verticalement */
+}
+
+.iconcoordonnees3 {
+    margin-right: 15px;
+    display: inline;  /* Icône inline avec texte */
+    flex-shrink: 0;  /* Empêche rétrécissement */
+}
+
+/* Texte MAIL inline avec @ */
+.contact-itemcoordonnees3:has(.iconcoordonnees3::before) {  /* Support moderne */
+    white-space: nowrap;  /* Empêche retour ligne @ */
+}
+
+/* Colonne droite */
+.info-rightcoordonnees3 {
+    border: 1px solid black;
+    flex: 1;
+    display: flex;
+    padding: 35px;
+    align-items: center;
+}
+
+.red-barcoordonnees3 {
+    width: 6px;
+    height: 150px;
+    background-color: #8b3a3a;
+    margin-right: 160px;
+}
+
+/* Grille réseaux */
+.social-gridcoordonnees3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    text-align: center;
+}
+
+.social-linkcoordonnees3 {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-iconcoordonnees3 {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+/* Section bas */
+.footer-sectioncoordonnees3 {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.back-btn-boxcoordonnees3 {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 10px 25px;
+    margin-bottom: 20px;
+}
+
+.back-buttoncoordonnees3 {
+    font-size: 3rem;
+    cursor: pointer;
+}
+
