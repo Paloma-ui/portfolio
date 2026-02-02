@@ -1,0 +1,381 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+body.graphisme10 {
+    background-color: #f0e6d3;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden; /* Évite le scroll horizontal pendant les anims */
+    
+    /* Animation d'entrée globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CADRE PRINCIPAL */
+.main-container10 {
+    width: 100%;       
+    min-height: 100vh; 
+    background-color: #f0e6d3;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   1. BANNIÈRE (ANIMÉE)
+   ========================================= */
+.banner10 {
+
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner10 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Zoom lent continu */
+    animation: slowZoom 20s linear infinite alternate;
+}
+
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/* TITRE GÉANT */
+.banner10 h1 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #f0e6d3;
+    font-size: 110px; /* XXL */
+    margin: 0;
+    letter-spacing: 10px;
+    text-shadow: 4px 4px 0px black;
+    
+    /* Le titre monte d'un coup à l'arrivée */
+    animation: slideUpTitle 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+@keyframes slideUpTitle {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================
+   2. BARRE D'INFOS (INTERACTIVE)
+   ========================================= */
+.info-bar10 {
+    border-bottom: 1px solid #7e2720;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 50px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Profil Agrandi */
+.user-profile10 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+    /* Arrive par la gauche */
+    animation: slideInLeft 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.avatar10 {
+    width: 70px;
+    height: 70px;
+    background-color: #ff5bcb; /* Gris bleu */
+  
+}
+
+.status-text10 {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* BOUTON S'ABONNER (PULSATION) */
+.subscribe-btn10 {
+    border: 1px solid #190705;
+    background: transparent;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 25px;
+    color: #190705;
+    font-weight: bold;
+    white-space: nowrap;
+    
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Battement */
+    animation: pulseBtn 2s infinite;
+}
+
+@keyframes pulseBtn {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.subscribe-btn10:hover {
+    background-color: #7e2720;
+    color: #f0e6d3;
+    transform: scale(1.15);
+    box-shadow: 0px 0px 15px rgba(139, 58, 58, 0.6);
+    animation: none;
+}
+
+/* Navigation Agrandie */
+.navigation-buttons10 {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn10 {
+    padding: 15px 25px;
+    font-size: 35px;
+    color: #190705;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-btn10:hover {
+    transform: scale(1.3); /* Gros Zoom */
+    color: #7e2720; /* Rouge */
+    text-shadow: 0px 0px 15px #7e2720; /* Lueur */
+}
+
+/* =========================================
+   3. CONTENU (GRID)
+   ========================================= */
+.content-area10 {
+    display: flex;
+    flex: 1;
+}
+
+/* Panneau Gauche */
+.left-panel10 {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.left-panel10 h2 {
+    color: #7e2720;
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    
+    /* Flottement */
+    animation: floatText 4s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Panneau Droit (Liste) */
+.right-panel10 {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* CARTE VIDÉO AGRANDIE */
+.video-card10 {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+    text-decoration: none;
+    color: black;
+    
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    
+    /* Animation Cascade */
+    opacity: 0;
+    animation: popInRight 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Délais pour l'effet un par un */
+.video-card10:nth-child(1) { animation-delay: 0.3s; }
+.video-card10:nth-child(2) { animation-delay: 0.5s; }
+
+@keyframes popInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Survol de la carte */
+.video-card10:hover {
+    transform: translateX(-10px) scale(1.02);
+    box-shadow: 8px 8px 0px #a8a193;
+    border: 1px solid #a8a193;
+    border-radius: 10px;
+ 
+}
+
+.thumbnail10 {
+    width: 100px;
+    height: 100px;
+    background-color: #ff5bcb; /* Gris bleu */
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.video-card10:hover .thumbnail10 {
+    transform: scale(1.05); /* Zoom image */
+}
+
+.video-info10 h3 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    transition: color 0.3s;
+    color: #190705;
+}
+
+.video-card10:hover .video-info10 h3 {
+    color: #7e2720;
+}
+
+.video-info10 p {
+    font-size: 16px;
+    color: #7e2720;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER LE SCROLL VERTICAL */
+    body.graphisme10 {
+        height: auto;           /* La hauteur s'adapte au contenu */
+        overflow-y: auto;       /* Réactive l'ascenseur vertical */
+    }
+
+    .main-container10 {
+        min-height: auto;       /* S'adapte au contenu */
+        height: auto;
+    }
+
+    /* 2. BANNIÈRE RÉDUITE */
+    .banner10 {
+        height: 200px;          /* Hauteur réduite (350px -> 200px) */
+    }
+
+    .banner10 h1 {
+        font-size: 40px;        /* Titre adapté (110px -> 40px) */
+        letter-spacing: 2px;
+        bottom: 15px;
+        left: 15px;
+        width: 90%;             /* Évite le débordement à droite */
+        line-height: 1.1;
+    }
+
+    /* 3. BARRE D'INFOS (EMPILEMENT VERTICAL) */
+    .info-bar10 {
+        flex-direction: column; /* On empile les éléments */
+        gap: 20px;
+        padding: 20px;
+        align-items: center;    /* Centrage */
+        text-align: center;
+    }
+
+    .user-profile10 {
+        flex-direction: column; /* Avatar au-dessus du texte */
+        margin-bottom: 10px;
+    }
+
+    /* Bouton d'action large pour le tactile */
+    .subscribe-btn10 {
+        width: 100%;            
+        font-size: 20px;
+        padding: 12px;
+    }
+
+    .navigation-buttons10 {
+        width: 100%;
+        justify-content: space-around; /* Espacement équilibré */
+        margin-top: 10px;
+    }
+
+    /* 4. ZONE DE CONTENU (TITRE AU-DESSUS DE LA LISTE) */
+    .content-area10 {
+        flex-direction: column; /* Passage de horizontal à vertical */
+    }
+
+    /* Panneau Titre (ex-Gauche) */
+    .left-panel10 {
+        padding: 30px 15px;
+        flex: auto;             /* Annule la contrainte de taille */
+    }
+
+    .left-panel10 h2 {
+        font-size: 28px;        /* Texte réduit */
+    }
+
+    /* Panneau Liste (ex-Droit) */
+    .right-panel10 {
+        padding: 10px 15px 40px 15px; /* Marge en bas pour le scroll final */
+        flex: auto;
+    }
+
+    /* 5. CARTE VIDÉO COMPACTE */
+    .video-card10 {
+        padding: 15px;
+        gap: 15px;
+        align-items: flex-start; /* Aligne l'image en haut */
+    }
+
+    .thumbnail10 {
+        width: 80px;            /* Miniature réduite */
+        height: 80px;
+        flex-shrink: 0;         /* Empêche l'image de s'écraser */
+    }
+
+    .video-info10 h3 {
+        font-size: 18px;
+    }
+
+    .video-info10 p {
+        font-size: 14px;
+    }
+}

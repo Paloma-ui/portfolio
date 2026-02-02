@@ -1,0 +1,377 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+body.ergonomie8 {
+    background-color: #f0e6d3;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden; /* Important pour les animations */
+    
+    /* Animation d'entrée globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CADRE PRINCIPAL */
+.main-container8 {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f0e6d3;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   1. BANNIÈRE (ANIMÉE)
+   ========================================= */
+.banner8 {
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner8 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Zoom lent continu */
+    animation: slowZoom 20s linear infinite alternate;
+}
+
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/* TITRE GÉANT */
+.banner8 h1 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #f0e6d3;
+    font-size: 110px;
+    margin: 0;
+    letter-spacing: 10px;
+    
+    /* Ombre marron (spécifique Ergonomie) */
+    text-shadow: 4px 4px 0px #190705;
+    
+    /* Le titre monte d'un coup à l'arrivée */
+    animation: slideUpTitle 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+@keyframes slideUpTitle {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================
+   2. BARRE D'INFOS (INTERACTIVE)
+   ========================================= */
+.info-bar8 {
+    border-bottom: 1px solid #7e2720;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 50px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Profil Agrandi */
+.user-profile8 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+    /* Arrive par la gauche */
+    animation: slideInLeft 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.avatar8 {
+    width: 70px;
+    height: 70px;
+    background-color: #c3875c; /* Marron/Orange */
+ 
+}
+
+.status-text8 {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* BOUTON S'ABONNER (PULSATION) */
+.subscribe-btn8 {
+    border: 1px solid #190705;
+    background: transparent;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 25px;
+    color: #190705;
+    font-weight: bold;
+    white-space: nowrap;
+    
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Battement */
+    animation: pulseBtn 2s infinite;
+}
+
+@keyframes pulseBtn {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.subscribe-btn8:hover {
+    background-color: #7e2720;
+    color: #f0e6d3;
+    transform: scale(1.15);
+    box-shadow: 0px 0px 15px rgba(139, 58, 58, 0.6);
+    animation: none;
+}
+
+/* Navigation Agrandie */
+.navigation-buttons8 {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn8 {
+    padding: 15px 25px;
+    font-size: 35px;
+    color: #190705;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-btn8:hover {
+  transform: scale(1.3); /* Gros Zoom */
+    color: #7e2720; /* Rouge */
+    text-shadow: 0px 0px 15px #7e2720; /* Lueur */
+}
+
+/* =========================================
+   3. CONTENU (GRID)
+   ========================================= */
+.content-area8 {
+    display: flex;
+    flex: 1;
+}
+
+/* Panneau Gauche */
+.left-panel8 {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.left-panel8 h2 {
+    color: #7e2720;
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    
+    /* Flottement */
+    animation: floatText 4s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Panneau Droit */
+.right-panel8 {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CARTE VIDÉO AGRANDIE */
+.video-card8 {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+    text-decoration: none;
+    color: black;
+    
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    
+    /* Animation d'apparition */
+    opacity: 0;
+    animation: popInRight 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes popInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Survol de la carte */
+.video-card8:hover {
+    transform: translateX(-10px) scale(1.02);
+    box-shadow: 8px 8px 0px #a8a193 ;
+    border: 1px solid #a8a193 ;
+    border-radius: 10px;
+}
+
+.thumbnail8 {
+    width: 100px;
+    height: 100px;
+    background-color: #c3875c; /* Marron/Orange */
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.video-card8:hover .thumbnail8 {
+    transform: scale(1.05); /* Zoom image */
+}
+
+.video-info8 h3 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    transition: color 0.3s;
+    color: #190705;
+}
+
+.video-card8:hover .video-info8 h3 {
+    color: #7e2720;
+}
+
+.video-info8 p {
+    font-size: 16px;
+    color: #7e2720;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER LE SCROLL VERTICAL */
+    body.ergonomie8 {
+        height: auto;           /* La hauteur s'adapte au contenu, plus de blocage 100vh */
+        overflow-y: auto;       /* Réactive l'ascenseur */
+    }
+
+    .main-container8 {
+        min-height: auto;       /* S'adapte au contenu */
+        height: auto;
+    }
+
+    /* 2. BANNIÈRE RÉDUITE */
+    .banner8 {
+        height: 200px;          /* Hauteur réduite (350px -> 200px) */
+    }
+
+    .banner8 h1 {
+        font-size: 40px;        /* Titre adapté (110px -> 40px) */
+        letter-spacing: 2px;
+        bottom: 15px;
+        left: 15px;
+        width: 90%;             /* Marge de sécurité à droite */
+        line-height: 1.1;
+    }
+
+    /* 3. BARRE D'INFOS (EMPILEMENT VERTICAL) */
+    .info-bar8 {
+        flex-direction: column; /* On empile les éléments */
+        gap: 20px;
+        padding: 20px;
+        align-items: center;    /* Centrage horizontal */
+        text-align: center;
+    }
+
+    .user-profile8 {
+        flex-direction: column; /* Avatar au-dessus du texte */
+        margin-bottom: 10px;
+    }
+
+    /* Bouton d'action large (facile à toucher) */
+    .subscribe-btn8 {
+        width: 100%;
+        font-size: 20px;
+        padding: 12px;
+    }
+
+    .navigation-buttons8 {
+        width: 100%;
+        justify-content: space-around; /* Espacement équilibré */
+        margin-top: 10px;
+    }
+
+    /* 4. ZONE DE CONTENU (TITRE AU-DESSUS DE LA LISTE) */
+    .content-area8 {
+        flex-direction: column; /* Passage de horizontal à vertical */
+    }
+
+    /* Panneau Titre (ex-Gauche) */
+    .left-panel8 {
+        padding: 30px 15px;
+        flex: auto;             /* Annule la contrainte de taille */
+    }
+
+    .left-panel8 h2 {
+        font-size: 28px;        /* Texte réduit */
+    }
+
+    /* Panneau Liste (ex-Droit) */
+    .right-panel8 {
+        padding: 10px 15px 40px 15px; /* Marge en bas pour le scroll final */
+        flex: auto;
+    }
+
+    /* 5. CARTE VIDÉO COMPACTE */
+    .video-card8 {
+        padding: 15px;
+        gap: 15px;
+        align-items: flex-start; /* Aligne l'image en haut de la carte */
+    }
+
+    .thumbnail8 {
+        width: 80px;            /* Miniature réduite */
+        height: 80px;
+        flex-shrink: 0;         /* Empêche l'image de s'écraser */
+    }
+
+    .video-info8 h3 {
+        font-size: 18px;
+    }
+
+    .video-info8 p {
+        font-size: 14px;
+    }
+}

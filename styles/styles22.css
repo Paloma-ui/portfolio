@@ -1,0 +1,216 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+/* BODY PLEIN ÉCRAN */
+body.devoirTPgamer22 {
+    background-color: #f1ede4;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    /* Animation d'entrée globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CONTENEUR PRINCIPAL CENTRÉ */
+.main-container22 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* =========================================
+   BOÎTE DES IMAGES (ANIMÉE)
+   ========================================= */
+.images-box22 {
+    /* ON AGRANDIT LA SECTION */
+    width: 95%;          
+    max-width: 1800px;   
+    height: 85vh;        
+    
+    margin: 0 auto;
+    padding: 10px;
+    
+    /* FLEXBOX pour aligner les 2 images */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; 
+    
+    /* Important pour voir l'ombre */
+    overflow: visible;
+}
+
+/* STYLE DES IMAGES */
+.images-box22 img {
+    /* LES IMAGES S'ADAPTENT SANS ÊTRE COUPÉES */
+    max-height: 100%;    
+    max-width: 48%;      /* Chaque image prend un peu moins de la moitié */
+    width: auto;
+    height: auto;
+    
+    object-fit: contain; 
+    display: block;
+    
+    /* ETAT INITIAL : Caché */
+    opacity: 0;
+    
+    /* DOUBLE ANIMATION : Arrivée + Flottement */
+    animation: 
+        popInImage 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        floatImage 6s ease-in-out infinite;
+    
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* DÉCALAGE D'ANIMATION (Effet vague) */
+.images-box22 img:nth-child(1) { animation-delay: 0.2s, 1s; }
+.images-box22 img:nth-child(2) { animation-delay: 0.4s, 1.2s; }
+
+@keyframes popInImage {
+    from { opacity: 0; transform: scale(0.8) translateY(50px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* INTERACTION AU SURVOL */
+.images-box22 img:hover {
+    animation-play-state: paused; /* Pause le flottement */
+    transform: scale(1.05) translateY(-5px); /* Zoom */
+    filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.3)); /* Ombre portée */
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* =========================================
+   CONTRÔLES (PLAYER)
+   ========================================= */
+.player-controls22 {
+    /* ALIGNEMENT AVEC LA BOÎTE D'IMAGES */
+    width: 100%;
+    max-width: 1200px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    /* Arrive par le bas */
+    opacity: 0;
+    animation: slideUpControls 0.8s ease-out forwards 0.6s;
+}
+
+@keyframes slideUpControls {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* STYLE DES BOUTONS */
+.control-btn22 {
+    font-size: 70px;
+    color: #7e2720;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+    margin: 0 40px;
+    
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Effet au survol (Sauf Pause) */
+.control-btn22:not(.pause22):hover {
+    transform: scale(1.3);
+    color: #7e2720;
+    text-shadow: 0px 0px 15px rgba(126, 39, 32, 0.6);
+}
+
+/* STYLE DU BOUTON PAUSE */
+.pause22 {
+    font-weight: bold;
+    cursor: default;
+    padding: 0 40px;
+    margin: 0 60px;
+    
+   
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER L'ÉCRAN */
+    body.devoirTPgamer22 {
+        height: auto;           /* La hauteur s'adapte au contenu */
+        overflow-y: auto;       /* Réactive le défilement vertical */
+        display: block;         /* Annule le centrage rigide */
+    }
+
+    .main-container22 {
+        height: auto;           /* Le conteneur grandit avec le contenu */
+        padding: 20px 10px;     /* Marges réduites */
+        justify-content: flex-start; /* Aligne le contenu vers le haut */
+    }
+
+    /* 2. BOÎTE DES IMAGES (EMPILEMENT) */
+    .images-box22 {
+        flex-direction: column; /* Les images passent les unes sous les autres */
+        height: auto;           /* Plus de hauteur fixe à 85vh */
+        gap: 50px;              /* Espace confortable entre les images */
+        padding: 30px 0;
+    }
+
+    /* 3. IMAGES AGRANDIES */
+    .images-box22 img {
+        max-width: 90%;         /* Prend une bonne largeur sur le téléphone */
+        width: auto;
+        max-height: 50vh;       /* Limite la hauteur pour qu'une image ne prenne pas tout l'écran */
+        margin: 0 auto;         /* Centrage */
+    }
+
+    /* 4. CONTRÔLES COMPACTS */
+    .player-controls22 {
+        padding-bottom: 50px;   /* Marge en bas de page */
+        flex-wrap: nowrap;      /* Force les boutons sur une ligne */
+        width: 100%;
+    }
+
+    .control-btn22 {
+        font-size: 50px;        /* Icônes réduites (70px -> 50px) */
+        margin: 0 10px;         /* Marges réduites (40px -> 10px) */
+    }
+
+    /* CORRECTION CRITIQUE : MARGES DU BOUTON PAUSE */
+    /* Sur PC : margin 60px + padding 40px = Trop large pour mobile */
+    .pause22 {
+        margin: 0 15px;         /* Réduction drastique pour tout faire rentrer */
+        padding: 0;             /* Suppression du padding interne */
+    }
+}
+

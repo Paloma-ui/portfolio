@@ -1,0 +1,212 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+/* BODY PLEIN ÉCRAN */
+body.devoirpageergo23 {
+    background-color: #f1ede4;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    /* Animation d'entrée globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CONTENEUR PRINCIPAL CENTRÉ */
+.main-container23 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #f1ede4;
+    padding: 20px;
+}
+
+/* =========================================
+   BOÎTE DE L'IMAGE (ANIMÉE)
+   ========================================= */
+.image-box23 {
+    /* ADAPTATION AUTOMATIQUE */
+    width: auto;         
+    height: auto;        
+    
+    /* On garde une limite max pour ne pas dépasser l'écran */
+    max-height: 80vh;    
+    max-width: 90%;
+    
+    margin: 0 auto;
+    padding: 10px;
+    
+    /* GESTION DU CONTENU */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Important pour voir l'ombre au survol */
+    overflow: visible;
+}
+
+.image-box23 img {
+    /* L'IMAGE DÉFINIT LA TAILLE */
+    display: block;      
+    
+    /* Limites pour rester dans l'écran */
+    max-height: 80vh;    
+    max-width: 100%;     
+    
+    width: auto;         
+    height: auto;        
+    
+    /* ETAT INITIAL : Caché */
+    opacity: 0;
+    
+    /* DOUBLE ANIMATION : Arrivée + Flottement */
+    animation: 
+        popInImage 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        floatImage 6s ease-in-out infinite 0.8s;
+    
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+@keyframes popInImage {
+    from { opacity: 0; transform: scale(0.8) translateY(50px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* INTERACTION AU SURVOL */
+.image-box23 img:hover {
+    animation-play-state: paused; /* Pause le flottement */
+    transform: scale(1.05) translateY(-5px); /* Zoom */
+    filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.3)); /* Ombre portée */
+    cursor: pointer;
+}
+
+/* =========================================
+   CONTRÔLES (PLAYER)
+   ========================================= */
+.player-controls23 {
+    /* ALIGNEMENT AVEC L'IMAGE */
+    width: 100%;
+    max-width: 600px; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    /* Arrive par le bas */
+    opacity: 0;
+    animation: slideUpControls 0.8s ease-out forwards 0.6s;
+}
+
+@keyframes slideUpControls {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* STYLE DES BOUTONS */
+.control-btn23 {
+    font-size: 70px;
+    color: #7e2720;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+    margin: 0 40px;
+    
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Effet au survol (Sauf Pause) */
+.control-btn23:not(.pause23):hover {
+    transform: scale(1.3);
+    color: #7e2720;
+    text-shadow: 0px 0px 15px rgba(126, 39, 32, 0.6);
+}
+
+/* STYLE DU BOUTON PAUSE */
+.pause23 {
+    font-weight: bold;
+    cursor: default;
+    padding: 0 40px;
+    margin: 0 60px;
+    
+
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER L'ÉCRAN */
+    body.devoirpageergo23 {
+        height: auto;           /* La hauteur s'adapte au contenu */
+        overflow-y: auto;       /* Réactive le défilement vertical */
+        display: block;         /* Annule le centrage rigide */
+    }
+
+    .main-container23 {
+        height: auto;           /* Le conteneur grandit avec le contenu */
+        padding: 20px 10px;     /* Marges réduites */
+        justify-content: flex-start; /* Aligne le contenu vers le haut */
+    }
+
+    /* 2. ADAPTER LA BOÎTE IMAGE */
+    .image-box23 {
+        height: auto;           /* Plus de hauteur fixe */
+        max-width: 100%;        /* Utilise toute la largeur disponible */
+        padding: 20px 0;
+        margin-bottom: 20px;
+    }
+
+    .image-box23 img {
+        max-width: 90%;         /* L'image prend une largeur confortable */
+        width: auto;
+        /* On réduit la hauteur max pour laisser de la place aux boutons sur petit écran */
+        max-height: 55vh;       
+    }
+
+    /* 3. CONTRÔLES COMPACTS */
+    .player-controls23 {
+        padding-bottom: 50px;   /* Marge en bas pour le confort tactile */
+        width: 100%;
+        max-width: 100%;        /* S'assure de ne pas dépasser */
+    }
+
+    .control-btn23 {
+        font-size: 50px;        /* Icônes réduites (70px -> 50px) */
+        margin: 0 10px;         /* Espacement réduit (40px -> 10px) */
+    }
+
+    /* CORRECTION CRITIQUE : MARGES DU PAUSE */
+    /* Sur PC : margin 60px + padding 40px = 200px de vide. Trop pour un mobile. */
+    .pause23 {
+        margin: 0 15px;         /* Réduction drastique */
+        padding: 0;             /* Suppression du padding interne */
+    }
+}

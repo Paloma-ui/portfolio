@@ -1,0 +1,374 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+body.codage7 {
+    background-color: #f1ede4;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden; /* Évite les ascenseurs horizontaux pendant les animations */
+    
+    /* Animation d'entrée de page globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CADRE PRINCIPAL */
+.main-container7 {
+    border: none;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f1ede4;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   1. BANNIÈRE (ANIMÉE)
+   ========================================= */
+.banner7 {
+    border-bottom: 1px solid black;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner7 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Zoom lent continu (Effet Ken Burns) */
+    animation: slowZoom 20s linear infinite alternate;
+}
+
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.banner7 h1 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #f0e6d3;
+    font-size: 110px;
+    margin: 0;
+    letter-spacing: 10px;
+    
+    /* Ombre portée noire pour la lisibilité */
+    text-shadow: 4px 4px 0px black;
+    
+    /* Le titre monte d'un coup à l'arrivée */
+    animation: slideUpTitle 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transform: translateY(100px); /* Caché en bas au début */
+    opacity: 0;
+}
+
+@keyframes slideUpTitle {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================
+   2. BARRE D'INFOS (INTERACTIVE)
+   ========================================= */
+.info-bar7 {
+    border-bottom: 1px solid #7e2720;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 50px;
+    position: relative;
+    z-index: 10;
+}
+
+.user-profile7 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+    /* Arrive par la gauche */
+    animation: slideInLeft 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.avatar7 {
+    width: 70px;
+    height: 70px;
+    background-color: #95008d; /* Ton violet */
+  
+}
+
+.status-text7 {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* BOUTON S'ABONNER (PULSATION + HOVER) */
+.subscribe-btn7 {
+    border: 1px solid #190705;
+    background: transparent;
+    border-radius: 50px;
+    padding: 15px 30px;
+    color: #190705;
+    font-weight: bold;
+    font-size: 25px;
+    
+    /* Transition fluide */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Petit battement cardiaque */
+    animation: pulseBtn 2s infinite;
+}
+
+@keyframes pulseBtn {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.subscribe-btn7:hover {
+    background-color: #7e2720;
+    color: #f0e6d3;
+    transform: scale(1.15); /* Gros zoom */
+    box-shadow: 0px 0px 15px rgba(139, 58, 58, 0.6);
+    animation: none; /* Stop le battement au survol */
+}
+
+/* BOUTONS NAVIGATION (RETOUR/PLAY) */
+.navigation-buttons7 {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn7 {
+    padding: 15px 25px;
+    font-size: 35px;
+    color: #190705;
+    text-decoration: none;
+    border: 1px solid transparent; /* Prépare la bordure */
+   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+    border-radius: 10px;
+}
+
+.nav-btn7:hover {
+   transform: scale(1.3); /* Gros Zoom */
+    color: #7e2720; /* Rouge */
+    text-shadow: 0px 0px 15px #7e2720; /* Lueur */
+   
+}
+
+/* =========================================
+   3. CONTENU (GRID)
+   ========================================= */
+.content-area7 {
+    display: flex;
+    flex: 1;
+}
+
+/* COLONNE GAUCHE (TITRE FLOTTANT) */
+.left-panel7 {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.left-panel7 h2 {
+    color: #7e2720;
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    
+    /* Flottement lent */
+    animation: floatText 4s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* COLONNE DROITE (LISTE VIDÉOS) */
+.right-panel7 {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CARTE VIDÉO (ANIMÉE) */
+.video-card7 {
+    display: flex;
+    gap: 25px;
+    padding: 25px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    
+    /* Animation d'apparition (Cascade) */
+    opacity: 0;
+    animation: popInRight 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.3s; /* Délai pour arriver après le reste */
+}
+
+@keyframes popInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Survol de la carte */
+.video-card7:hover {
+    transform: translateX(-10px) scale(1.02);
+    box-shadow: 8px 8px 0px #a8a193 ; /* Ombre rétro */
+    border: 1px solid #a8a193 ;
+    border-radius: 10px;
+}
+
+.thumbnail7 {
+    width: 100px;
+    height: 100px;
+    background-color: #95008d; /* Ton violet */
+    transition: transform 0.3s ease;
+}
+
+.video-card7:hover .thumbnail7 {
+    transform: scale(1.05); /* Zoom de l'image */
+}
+
+.video-info7 h3 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    transition: color 0.3s;
+}
+
+.video-card7:hover .video-info7 h3 {
+    color: #7e2720; /* Titre devient rouge */
+}
+
+.video-info7 p {
+    font-size: 16px;
+    color: #7e2720;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER LE SCROLL GLOBAL */
+    body.codage7 {
+        height: auto;           /* La hauteur s'adapte au contenu */
+        overflow-y: auto;       /* Réactive l'ascenseur vertical */
+    }
+
+    .main-container7 {
+        min-height: auto;       /* Plus de hauteur forcée */
+        height: auto;
+    }
+
+    /* 2. BANNIÈRE RÉDUITE */
+    .banner7 {
+        height: 200px;          /* On réduit la hauteur (350px -> 200px) */
+    }
+
+    .banner7 h1 {
+        font-size: 40px;        /* Titre beaucoup plus petit (110px -> 40px) */
+        letter-spacing: 2px;
+        bottom: 15px;
+        left: 15px;
+        width: 90%;             /* Évite que le texte sorte à droite */
+        line-height: 1.1;
+    }
+
+    /* 3. BARRE D'INFOS (EMPILEMENT) */
+    .info-bar7 {
+        flex-direction: column; /* On empile tout verticalement */
+        gap: 20px;              /* Espace entre les éléments */
+        padding: 20px;
+        align-items: center;    /* Tout centrer */
+        text-align: center;
+    }
+
+    .user-profile7 {
+        flex-direction: column; /* Avatar au-dessus du texte */
+        margin-bottom: 10px;
+    }
+
+    /* Bouton d'abonnement large pour le tactile */
+    .subscribe-btn7 {
+        width: 100%;            
+        font-size: 20px;
+        padding: 12px;
+    }
+
+    .navigation-buttons7 {
+        width: 100%;
+        justify-content: space-around; /* Boutons bien espacés */
+        margin-top: 10px;
+    }
+
+    /* 4. CONTENU PRINCIPAL (COLONNES -> LIGNES) */
+    .content-area7 {
+        flex-direction: column; /* Le panneau gauche passe au-dessus du droit */
+    }
+
+    /* Panneau Titre (ex-Gauche) */
+    .left-panel7 {
+        padding: 30px 15px;
+        flex: auto;             /* Annule le flex: 2 */
+    }
+
+    .left-panel7 h2 {
+        font-size: 28px;        /* Texte réduit (40px -> 28px) */
+    }
+
+    /* Panneau Liste (ex-Droit) */
+    .right-panel7 {
+        padding: 10px 15px 40px 15px; /* Marge en bas pour scroller */
+        flex: auto;
+    }
+
+    /* 5. CARTES VIDÉOS */
+    .video-card7 {
+        padding: 15px;
+        gap: 15px;
+        align-items: flex-start; /* Aligne l'image en haut */
+    }
+
+    .thumbnail7 {
+        width: 80px;            /* Image un peu plus petite */
+        height: 80px;
+        flex-shrink: 0;         /* Empêche l'image de s'écraser */
+    }
+
+    .video-info7 h3 {
+        font-size: 18px;        /* Titre vidéo plus petit */
+    }
+    
+    .video-info7 p {
+        font-size: 14px;
+    }
+}

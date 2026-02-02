@@ -1,0 +1,211 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+/* BODY PLEIN ÉCRAN */
+body.devoirphotoshop20 {
+    background-color: #f1ede4;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    /* Animation d'entrée globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CONTENEUR PRINCIPAL CENTRÉ */
+.main-container20 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #f1ede4;
+    padding: 20px;
+}
+
+/* =========================================
+   BOÎTE DES IMAGES (ANIMÉE)
+   ========================================= */
+.images-box20 {
+    height: 80vh; 
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Espace un peu plus grand pour l'aération */
+    
+    /* On laisse visible pour que les ombres ne soient pas coupées */
+    overflow: visible; 
+}
+
+/* STYLE DES IMAGES */
+.images-box20 img {
+    max-height: 100%;
+    max-width: 45%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    
+    /* ETAT INITIAL : Caché et plus petit */
+    opacity: 0;
+    
+    /* DOUBLE ANIMATION :
+       1. popInImage : Arrivée dynamique (0.8s)
+       2. floatImage : Flottement infini (commence après l'arrivée)
+    */
+    animation: 
+        popInImage 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        floatImage 6s ease-in-out infinite 0.8s;
+    
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Décalage pour l'effet cascade */
+.images-box20 img:nth-child(1) { animation-delay: 0.2s, 1s; } /* Arrive à 0.2s, flotte à 1s */
+.images-box20 img:nth-child(2) { animation-delay: 0.4s, 1.2s; } /* Arrive à 0.4s, flotte à 1.2s */
+
+@keyframes popInImage {
+    from { opacity: 0; transform: scale(0.8) translateY(50px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* INTERACTION AU SURVOL DE L'IMAGE */
+.images-box20 img:hover {
+    animation-play-state: paused; /* On met le flottement en pause pour bien voir */
+    transform: scale(1.05) translateY(-5px); /* Zoom */
+    filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.3)); /* Belle ombre portée */
+    z-index: 10;
+}
+
+/* =========================================
+   CONTRÔLES (PLAYER)
+   ========================================= */
+.player-controls20 {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    /* Arrive par le bas */
+    opacity: 0;
+    animation: slideUpControls 0.8s ease-out forwards 0.6s;
+}
+
+@keyframes slideUpControls {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* STYLE DES BOUTONS DE NAVIGATION */
+.control-btn20 {
+    font-size: 70px;
+    color: #7e2720;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+    margin: 0 40px;
+    
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Effet au survol (Sauf sur le bouton pause) */
+.control-btn20:not(.pause20):hover {
+    transform: scale(1.3);
+    color: #7e2720;
+    text-shadow: 0px 0px 15px rgba(126, 39, 32, 0.6);
+}
+
+/* STYLE DU BOUTON PAUSE */
+.pause20 {
+    font-weight: bold;
+    cursor: default;
+    padding: 0 40px;
+    margin: 0 60px;
+    
+
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER LA MISE EN PAGE */
+    body.devoirphotoshop20 {
+        height: auto;           /* La hauteur s'adapte au contenu */
+        overflow-y: auto;       /* Réactive le défilement vertical */
+        display: block;         /* Annule le centrage vertical rigide */
+    }
+
+    .main-container20 {
+        height: auto;           /* Le conteneur grandit avec le contenu */
+        padding: 20px 10px;     /* Marges latérales réduites */
+        justify-content: flex-start; /* Aligne le contenu en haut */
+    }
+
+    /* 2. BOÎTE DES IMAGES (EMPILEMENT) */
+    .images-box20 {
+        flex-direction: column; /* Les images passent les unes sous les autres */
+        height: auto;           /* Plus de hauteur fixe à 80vh */
+        gap: 50px;              /* Espace pour éviter que le flottement ne superpose les images */
+        padding: 30px 0;
+    }
+
+    /* 3. IMAGES AGRANDIES */
+    .images-box20 img {
+        max-width: 90%;         /* Prend presque toute la largeur du téléphone */
+        width: auto;
+        max-height: 50vh;       /* Limite la hauteur pour qu'on voit l'image entière */
+        margin: 0 auto;         /* Centrage */
+    }
+
+    /* 4. CONTRÔLES COMPACTS */
+    .player-controls20 {
+        padding-bottom: 50px;   /* Marge en bas de page */
+        flex-wrap: nowrap;      /* Force les boutons sur une ligne */
+        width: 100%;
+    }
+
+    .control-btn20 {
+        font-size: 50px;        /* Icônes un peu plus petites (70px -> 50px) */
+        margin: 0 10px;         /* Réduit les marges standard (40px -> 10px) */
+    }
+
+    /* CORRECTION CRITIQUE : MARGES DU PAUSE */
+    /* Sur PC, margin est de 60px (total 120px vide). Trop large pour mobile. */
+    .pause20 {
+        margin: 0 15px;         /* Réduction drastique pour tout faire rentrer */
+        padding: 0;
+    }
+}

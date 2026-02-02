@@ -1,0 +1,287 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+body.sae10313 {
+    background-color: #f0e6d3;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Plein écran */
+    overflow: hidden;
+    
+    /* Animation d'entrée globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CONTENEUR PRINCIPAL (Flexbox horizontal) */
+.main-container13 {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    padding: 40px; /* Espace pour les ombres */
+    gap: 40px;
+}
+
+/* =========================================
+   COLONNE GAUCHE (CARTE LECTEUR SOMBRE)
+   ========================================= */
+.left-panel13 {
+    flex: 1; 
+    background-color: #5f6478;
+    color: #f0e6d3;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    /* STYLE CARTE RÉTRO */
+    box-shadow: 10px 10px 0px #a8a193;
+    border-radius: 20px;
+    
+    /* ANIMATIONS (Arrivée + Flottement) */
+    transform: translateX(-50px);
+    opacity: 0;
+    animation: 
+        slideInLeftPanel 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        floatPanel 6s ease-in-out infinite 0.8s;
+}
+
+@keyframes slideInLeftPanel {
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes floatPanel {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* En-tête */
+.track-header13 {
+    text-align: center;
+    border-bottom: 1px solid #4c5060;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.track-header13 h1 {
+    margin: 0;
+    font-size: 35px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 0px #4c5060 ;
+}
+
+.author13 {
+    margin: 10px 0 0 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* Description (Texte AGRANDI) */
+.description-box13 {
+    width: 100%;
+    margin: auto;
+    text-align: justify;
+    font-size: 20px;
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    color: #f0e6d3;
+}
+
+/* Contrôles du bas */
+.player-controls13 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    color: #f0e6d3;
+}
+
+.utility-icons13 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+   
+}
+
+.utility-icons13 span:hover {
+    color: #7e2720;
+}
+
+.progress-bar13 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.bar-bg13 {
+    flex-grow: 1;
+    height: 6px;
+    background-color: #190705;
+    cursor: pointer;
+}
+
+.bar-fill13 {
+    width: 45%;
+    height: 100%;
+    background-color: #7e2720;
+}
+
+/* BOUTON PLAY */
+.play-btn13 {
+    align-self: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #f0e6d3;
+    color: #5f6478;
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.play-btn13:hover {
+    transform: scale(1.3);
+    background-color: #7e2720; /* Rouge brique */
+    color: #f0e6d3;
+    border-color: #f0e6d3;
+    box-shadow: 0px 0px 15px #7e2720;
+}
+
+/* =========================================
+   COLONNE DROITE (VISUELS CLAIRS)
+   ========================================= */
+.right-panel13 {
+    flex: 1;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Espace entre les vinyles */
+    position: relative;
+    padding: 0 40px;
+    
+    /* Animation Arrivée Droite */
+    transform: translateX(50px);
+    opacity: 0;
+    animation: slideInRightPanel 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes slideInRightPanel {
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* LES VINYLES (FLOTTEMENT) */
+.vinyl-link13 {
+    display: block;
+    width: 80%;
+    max-width: 450px;
+    
+    /* Animation Flottement */
+    animation: vinylFloat 5s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+/* On décale le 2ème vinyle */
+.vinyl-link13:nth-child(2) {
+    animation-delay: 1s;
+}
+
+@keyframes vinylFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.vinyl-link13:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0px 15px 15px #a8a193);
+}
+
+.cover-image13 {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(5px 5px 10px #a8a193);
+    transition: filter 0.3s ease;
+}
+
+/* BOUTON RETOUR */
+.nav-footer13 {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.back-btn13 {
+    font-size: 60px;
+    text-decoration: none;
+    color: #190705;
+    line-height: 1;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.back-btn13:hover {
+    transform: scale(1.3);
+    color: #7e2720;
+    text-shadow: 0px 0px 15px #7e2720;
+}
+
+/* =========================================
+   RESPONSIVE (MOBILE)
+   ========================================= */
+@media screen and (max-width: 1024px) {
+    body.sae10313 {
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .main-container13 {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 40px;
+    }
+
+    .left-panel13, .right-panel13 {
+        width: 100%;
+        margin: 0;
+        padding: 30px;
+    }
+
+    .left-panel13 {
+        box-shadow: 5px 5px 0px black;
+    }
+
+    .vinyl-link13 {
+        max-width: 300px;
+    }
+
+    .nav-footer13 {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 30px;
+        text-align: right;
+    }
+}

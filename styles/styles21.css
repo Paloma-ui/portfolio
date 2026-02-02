@@ -1,0 +1,204 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+/* CORRECTION ET MISE EN PAGE BODY */
+body.devoirillustrator21 {
+    background-color: #f1ede4;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Plein écran */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    /* Animation d'entrée globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CONTENEUR PRINCIPAL */
+.main-container21 {
+    /* On enlève la bordure pour harmoniser avec la page Photoshop */
+    width: 100%;
+    max-width: 1200px; 
+    padding: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centré verticalement */
+    align-items: center;     /* Centré horizontalement */
+    gap: 20px;
+    background-color: #f1ede4;
+    height: 100vh;
+}
+
+/* =========================================
+   1. CADRE DE L'IMAGE (ANIMÉ)
+   ========================================= */
+.image-box21 {
+    height: 80vh;        
+    width: 100%;        
+    max-width: 900px;      
+    margin: 0 auto;      
+    padding: 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Important pour voir l'ombre sans qu'elle soit coupée */
+    overflow: visible;    
+}
+
+.image-box21 img {
+    /* L'IMAGE S'ADAPTE PARFAITEMENT */
+    width: auto;         
+    height: 100%;       
+    max-width: 100%;
+    
+    object-fit: contain; 
+    display: block;
+    
+    /* ETAT INITIAL : Caché */
+    opacity: 0;
+    
+    /* DOUBLE ANIMATION : Arrivée + Flottement */
+    animation: 
+        popInImage 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        floatImage 6s ease-in-out infinite 0.8s;
+        
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+@keyframes popInImage {
+    from { opacity: 0; transform: scale(0.8) translateY(50px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* INTERACTION AU SURVOL */
+.image-box21 img:hover {
+    animation-play-state: paused; /* On fige le flottement pour mieux voir */
+    transform: scale(1.05) translateY(-5px); /* Zoom */
+    filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.3)); /* Ombre portée */
+    cursor: pointer;
+}
+
+/* =========================================
+   2. CONTRÔLES (PLAYER)
+   ========================================= */
+.player-controls21 {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    /* Arrive par le bas */
+    opacity: 0;
+    animation: slideUpControls 0.8s ease-out forwards 0.6s;
+}
+
+@keyframes slideUpControls {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Style des boutons (Harmonisé) */
+.control-btn21 {
+    font-size: 70px;
+    color: #7e2720;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+    margin: 0 40px; 
+    
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Effet au survol (Sauf Pause) */
+.control-btn21:not(.pause21):hover {
+    transform: scale(1.3);
+    color: #7e2720;
+    text-shadow: 0px 0px 15px rgba(126, 39, 32, 0.6);
+}
+
+/* Style spécifique pour la pause */
+.pause21 {
+    font-weight: bold;
+    cursor: default;
+    padding: 0 40px;
+    margin: 0 60px; 
+    
+  
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER L'ÉCRAN */
+    body.devoirillustrator21 {
+        height: auto;           /* La hauteur s'adapte au contenu */
+        overflow-y: auto;       /* Réactive le défilement vertical */
+        display: block;         /* Annule le centrage vertical rigide */
+    }
+
+    .main-container21 {
+        height: auto;           /* Le conteneur grandit avec le contenu */
+        padding: 20px 10px;     /* Marges réduites */
+        justify-content: flex-start; /* Aligne le contenu vers le haut */
+    }
+
+    /* 2. CADRE IMAGE ADAPTÉ */
+    .image-box21 {
+        height: auto;           /* Plus de hauteur fixe à 80vh */
+        padding: 30px 0;
+        margin-bottom: 20px;
+    }
+
+    .image-box21 img {
+        max-width: 90%;         /* L'image prend une largeur confortable */
+        width: auto;
+        max-height: 50vh;       /* On limite la hauteur pour qu'elle ne mange pas tout l'écran */
+    }
+
+    /* 3. CONTRÔLES COMPACTS */
+    .player-controls21 {
+        padding-bottom: 50px;   /* Marge en bas pour le confort tactile */
+        flex-wrap: nowrap;      /* Force les boutons sur une seule ligne */
+        width: 100%;
+    }
+
+    .control-btn21 {
+        font-size: 50px;        /* Icônes réduites (70px -> 50px) */
+        margin: 0 10px;         /* Espacement réduit (40px -> 10px) */
+    }
+
+    /* CORRECTION CRITIQUE : MARGES DU PAUSE */
+    /* Sur PC : margin 60px + padding 40px = 200px de vide. Trop pour un mobile. */
+    .pause21 {
+        margin: 0 15px;         /* Réduction drastique */
+        padding: 0;             /* Suppression du padding interne */
+    }
+}
+

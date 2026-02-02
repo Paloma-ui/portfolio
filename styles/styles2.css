@@ -1,0 +1,192 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
+body.accueil2 {
+    background-color: #f0e6d3;
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    animation: slideInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cadre extérieur */
+.main-frame2 {
+    min-height: 100vh; /* Utilise toute la hauteur de l'écran */
+    padding: 20px 40px; /* Réduit le padding du haut pour coller au bord */
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.music-card2:nth-child(1) { animation-delay: 0s; }
+.music-card2:nth-child(2) { animation-delay: 1.5s; }
+.music-card2:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes floatingCards {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Titre */
+.welcome-text2 {
+    color: #7e2720;
+    font-size: 4.5rem;
+    letter-spacing: 12px;
+    margin: 0 0 50px 0;
+    text-align: center;
+        text-shadow: 4px 4px 0px #190705;
+}
+
+/* Conteneur des cartes */
+.cards-container2 {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    flex-wrap: wrap; /* Permet de passer à la ligne sur petit écran */
+    flex: 1;              /* Prend tout l'espace vertical disponible entre titre et footer */
+    align-items: center;  /* Centre les cartes verticalement dans cet espace */
+    align-content: center; /* Centre le bloc de cartes si elles passent sur plusieurs lignes */
+}
+
+
+/* Carte style lecteur MP3 */
+.music-card2 {
+    background-color: #5f6478;
+    border-radius: 30px;
+    width: 320px; 
+    height: 480px;
+    padding: 25px;
+    box-shadow: inset 0 0 15px #4c5060;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none; /* Enlève le soulignement du lien */
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: floatingCards 4s ease-in-out infinite;
+}
+
+.music-card2:hover {
+    animation: none; 
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0px 15px 30px #a8a193;
+    z-index: 10;
+}
+
+
+/* Écran blanc dans la carte */
+.screen2 {
+    background-color: #f0e6d3;
+    width: 100%;
+    flex: 1; /* Prend l'espace disponible */
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7e2720;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.6rem;
+  
+}
+
+/* Section contrôles */
+.controls2 {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.line2 {
+    border-top: 2px solid #190705;
+    width: 80%;
+    margin: 8px auto;
+    opacity: 0.6;
+}
+
+.icons2 {
+    font-size: 1.5rem;
+    color: #190705;
+    margin: 5px 0;
+}
+
+/* Navigation bas de page */
+.navigation-footer2 {
+    margin-top: 50px;
+    display: flex;
+    gap: 100px;
+    align-items: center;
+}
+
+.navigation-footer2 a {
+    text-decoration: none;
+    font-size: 60px; /* On s'assure qu'ils sont assez gros */
+    color: #190705; /* Noir/Marron foncé de base */
+    
+    display: inline-block; /* Indispensable pour l'animation */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effet rebond */
+}
+
+.navigation-footer2 a:hover {
+    transform: scale(1.3); /* Gros Zoom (130%) */
+    color: #7e2720; /* Ils deviennent ROUGE BRIQUE */
+    text-shadow: 0px 0px 20px #7e2720;; /* Lueur rouge autour */
+    cursor: pointer;
+}
+
+.back-button2, .next-button2 {
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: #7e2720;
+ 
+}
+/* 3. ANIMATION DES BOUTONS DU BAS (Retour & Contact) */
+/* On cible les deux boutons de la navigation */
+
+
+/* 5. RESPONSIVE MOBILE */
+@media screen and (max-width: 1024px) {
+    .main-frame2 {
+        height: auto; 
+        min-height: 100vh;
+        padding: 20px;
+    }
+    .welcome-text2 {
+        font-size: 50px; 
+        letter-spacing: 5px;
+        margin-bottom: 30px;
+    }
+    .cards-container2 {
+        flex-direction: column; 
+        gap: 30px;
+        width: 100%;
+    }
+    .music-card2 {
+        width: 100%;
+        max-width: 320px; 
+        height: auto;
+        min-height: 200px; 
+    }
+    /* On espace un peu les boutons du bas sur mobile */
+    .navigation-footer2 {
+        margin-top: 30px;
+        display: flex;
+        gap: 40px;
+    }
+}

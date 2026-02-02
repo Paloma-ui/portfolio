@@ -1,0 +1,236 @@
+/* RESET GÉNÉRAL */
+* {
+    box-sizing: border-box;
+}
+
+/* BODY PLEIN ÉCRAN */
+body.projets6 {
+    background-color: #f0e6d3;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Prend toute la hauteur */
+    overflow: hidden; /* Évite les ascenseurs */
+    display: flex;
+    justify-content: center;
+    /* Animation globale */
+    animation: fadeInGlobal 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInGlobal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CONTENEUR PRINCIPAL */
+.main-container6 {
+    width: 100%;
+    height: 100%;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 1. EN-TÊTE */
+.page-header6 {
+   position: relative;      /* Indispensable pour positionner le bouton en absolu */
+    display: flex;
+    justify-content: center; /* Centre le titre Horizontalement (Milieu Page) */
+    align-items: center;     /* Centre le titre Verticalement (Milieu En-tête) */
+    
+   
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    height: 80px;            /* On fixe une hauteur pour un alignement vertical parfait */
+}
+
+.page-header6 h1 {
+    color: #7e2720;
+    font-size: 60px;
+    margin: 0;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 0px #190705; /* Ombre */
+}
+
+
+.back-btn6 {
+   position: absolute;
+    right: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    text-decoration: none;
+    color: #7e2720;
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+}
+
+.back-btn6:hover {
+    transform: translateY(-50%) scale(1.3);
+    color: #7e2720;
+    text-shadow: 0px 0px 15px #7e2720;
+}
+
+/* 2. GRILLE DES PROJETS */
+.projects-grid6 {
+    display: grid;
+    /* 3 colonnes qui se partagent l'espace */
+    grid-template-columns: repeat(3, 1fr); 
+    /* 2 lignes qui se partagent l'espace restant */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 30px;
+    flex-grow: 1; /* Remplit tout l'espace restant en bas */
+    padding-bottom: 20px;
+}
+
+/* CARTE PROJET (LIEN) */
+.project-card6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+ 
+    opacity: 0;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Délais d'apparition */
+.project-card6:nth-child(1) { animation-delay: 0.1s; }
+.project-card6:nth-child(2) { animation-delay: 0.2s; }
+.project-card6:nth-child(3) { animation-delay: 0.3s; }
+.project-card6:nth-child(4) { animation-delay: 0.4s; }
+.project-card6:nth-child(5) { animation-delay: 0.5s; }
+.project-card6:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.5) translateY(50px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+
+/* Conteneur de l'image (Vinyle) */
+.image-wrapper6 {
+   width: 90%;          
+    max-width: 300px;    /* On réduit à 300px (au lieu de 400px) pour tout faire rentrer */
+    aspect-ratio: 1 / 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Flottement permanent */
+    animation: vinylFloat 4s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.project-card6:nth-child(even) .image-wrapper6 { animation-delay: 1s; }
+
+@keyframes vinylFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.image-wrapper6 img {
+   width: 100%;
+    height: 100%;
+    object-fit: contain;
+  filter: drop-shadow(#a8a193 );
+    transition: transform 0.3s ease;
+}
+
+/* Titre sous le vinyle */
+.project-card6 h3 {
+    margin-top: 10px;    /* Marge réduite */
+    font-size: 20px;     /* Taille de police réduite à 20px (lisible mais compacte) */
+    color: #7e2720;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    
+    /* Sécurité pour éviter que le texte ne dépasse */
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* EFFET SURVOL */
+.project-card6:hover .image-wrapper6 {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.4));
+}
+/* =========================================
+   RESPONSIVE MOBILE ET TABLETTE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER LE SCROLL */
+    /* Sur mobile, le contenu dépasse l'écran, il faut pouvoir descendre */
+    body.projets6 {
+        height: auto;         /* La hauteur s'adapte au contenu, plus bloquée à 100vh */
+        overflow-y: auto;     /* Réactive l'ascenseur vertical */
+        overflow-x: hidden;   /* Évite le scroll horizontal indésirable */
+    }
+
+    .main-container6 {
+        padding: 15px;        /* Marges réduites */
+        height: auto;         /* Le conteneur s'adapte aussi */
+    }
+
+    /* 2. EN-TÊTE ADAPTÉ */
+    .page-header6 {
+        height: auto;           /* Hauteur libre */
+        flex-direction: column; /* Empile les éléments si nécessaire */
+        margin-bottom: 40px;
+        padding-top: 10px;
+    }
+
+    .page-header6 h1 {
+        font-size: 32px;        /* Titre beaucoup plus petit (au lieu de 60px) */
+        letter-spacing: 2px;
+        text-align: center;
+        line-height: 1.2;
+        padding: 0 10px;        /* Évite que le texte touche les bords */
+    }
+
+    /* Le bouton retour se place en haut à droite ou au dessus */
+    .back-btn6 {
+        position: relative;     /* On l'enlève du mode absolute pour le flux normal */
+        right: auto;
+        top: auto;
+        transform: none;
+        align-self: flex-end;   /* Calé à droite */
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+    
+    .back-btn6:hover {
+        transform: scale(1.1);
+    }
+
+    /* 3. GRILLE DEVIENT COLONNE */
+    .projects-grid6 {
+        display: flex;          /* On passe en Flexbox vertical simple */
+        flex-direction: column; 
+        gap: 60px;              /* Espace généreux entre les vinyles */
+        padding-bottom: 60px;   /* Marge en bas pour ne pas couper le dernier */
+    }
+
+    /* 4. CARTE ET VINYLE */
+    .project-card6 {
+        width: 100%;
+    }
+
+    .image-wrapper6 {
+        max-width: 260px;       /* Vinyle légèrement réduit pour les petits écrans */
+    }
+
+    .project-card6 h3 {
+        font-size: 18px;
+        margin-top: 15px;
+        white-space: normal;    /* Autorise le titre à passer sur 2 lignes */
+        overflow: visible;      /* Affiche tout le texte */
+    }
+}

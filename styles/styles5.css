@@ -1,0 +1,225 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+/* CORRECTION DU BODY */
+body.competences5 {
+    background-color: #f0e6d3;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Plein écran */
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+
+    /* Animation d'entrée de page */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* CONTENEUR PRINCIPAL */
+.main-container5 {
+    width: 100%;
+    /* max-width: 1400px; <--- Décommentez si vous voulez limiter la largeur sur grands écrans */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 1. EN-TÊTE */
+.header-box5 {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.header-box5 h1 {
+    color: #7e2720;
+    font-size: 80px; /* Grande taille lisible */
+    letter-spacing: 12px;
+    margin: 0;
+    text-transform: uppercase;
+    /* Ombre Noire (Cohérence graphique) */
+    text-shadow: 4px 4px 0px #190705;
+}
+
+/* 2. GRILLE (GRID) */
+.skills-grid5 {
+    display: grid;
+    /* 3 Colonnes qui prennent chacune une part égale */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px; /* Espace entre les cartes */
+    width: 100%;
+    padding: 20px 50px;
+    flex: 1; /* Prend l'espace disponible au centre */
+    align-content: start; /* Les cartes commencent en haut */
+}
+
+/* 3. LA CARTE DE COMPÉTENCE */
+.skill-card5 {
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 80px; /* Hauteur fixe pour uniformiser */
+    
+    /* Animation d'apparition (Cascade) */
+    opacity: 0; /* Important : invisible au départ */
+    animation: slideUpFade 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    
+    /* Transition pour l'interaction */
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* EFFET CASCADE (Un par un) - Étendu jusqu'à 20 cartes */
+.skill-card5:nth-child(1) { animation-delay: 0.1s; }
+.skill-card5:nth-child(2) { animation-delay: 0.2s; }
+.skill-card5:nth-child(3) { animation-delay: 0.3s; }
+.skill-card5:nth-child(4) { animation-delay: 0.4s; }
+.skill-card5:nth-child(5) { animation-delay: 0.5s; }
+.skill-card5:nth-child(6) { animation-delay: 0.6s; }
+.skill-card5:nth-child(7) { animation-delay: 0.7s; }
+.skill-card5:nth-child(8) { animation-delay: 0.8s; }
+.skill-card5:nth-child(9) { animation-delay: 0.9s; }
+.skill-card5:nth-child(10) { animation-delay: 1.0s; }
+.skill-card5:nth-child(11) { animation-delay: 1.1s; }
+.skill-card5:nth-child(12) { animation-delay: 1.2s; }
+.skill-card5:nth-child(13) { animation-delay: 1.3s; }
+.skill-card5:nth-child(14) { animation-delay: 1.4s; }
+.skill-card5:nth-child(15) { animation-delay: 1.5s; }
+.skill-card5:nth-child(16) { animation-delay: 1.6s; }
+.skill-card5:nth-child(17) { animation-delay: 1.7s; }
+.skill-card5:nth-child(18) { animation-delay: 1.8s; }
+.skill-card5:nth-child(19) { animation-delay: 1.9s; }
+.skill-card5:nth-child(20) { animation-delay: 2.0s; }
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* EFFET AU SURVOL DE LA CARTE */
+.skill-card5:hover {
+    background-color: white; /* S'éclaire */
+    transform: translateY(-10px) scale(1.05); /* Monte et grossit */
+    box-shadow: 8px 8px 0px #a8a193; /* Grosse ombre rétro noire */
+    z-index: 10;
+}
+
+/* ICÔNE CARRÉE */
+.square-icon5 {
+    background-color: #5f6478;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Empêche l'icône de s'écraser */
+    transition: transform 0.4s ease, background-color 0.3s;
+}
+
+/* Au survol de la carte, l'icône bouge */
+.skill-card5:hover .square-icon5 {
+    transform: rotate(15deg) scale(1.1); /* Pivote un peu */
+    background-color: #7e2720; /* Devient rouge brique */
+}
+
+/* TEXTE ET ÉTOILES */
+.skill-content5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.skill-name5 {
+    font-size: 12px;
+    font-weight: bold;
+    color: #190705;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.stars5 {
+    color: #8b3a3a;
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* 4. PIED DE PAGE (BOUTON RETOUR) */
+.footer-box5 {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Centre le bouton */
+    margin-top: 20px;
+}
+
+.back-btn5 {
+    font-size: 50px; /* Gros bouton retour */
+    text-decoration: none;
+    color: #190705;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.back-btn5:hover {
+    transform: scale(1.3); /* Gros Zoom */
+    color: #7e2720; /* Rouge */
+    text-shadow: 0px 0px 15px #7e2720; /* Lueur */
+    cursor: pointer;
+}
+
+/* =========================================
+   RESPONSIVE (MOBILE & TABLETTE)
+   ========================================= */
+@media screen and (max-width: 1024px) {
+    
+    .main-container5 {
+        height: auto;
+        padding: 20px;
+    }
+
+    /* Le titre réduit pour tenir sur l'écran */
+    .header-box5 h1 {
+        font-size: 45px; 
+        letter-spacing: 5px;
+    }
+
+    /* LA GRILLE PASSE EN 1 COLONNE */
+    .skills-grid5 {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 20px;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Les cartes s'adaptent */
+    .skill-card5 {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .square-icon5 {
+        width: 50px;
+        height: 50px;
+    }
+
+    .skill-name5 {
+        font-size: 1rem;
+    }
+}

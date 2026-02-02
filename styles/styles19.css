@@ -1,0 +1,202 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+/* BODY PLEIN ÉCRAN */
+body.logos219 {
+    background-color: #f1ede4;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    /* Animation d'entrée globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CONTENEUR PRINCIPAL (Interface large) */
+.main-interface19 {
+    width: 95%;
+    height: 90vh;
+    padding: 20px;
+    
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;            
+    gap: 20px;                      
+}
+
+/* =========================================
+   LES COLONNES DE LOGOS (FLOTTANTES)
+   ========================================= */
+.logo-column19 {
+    flex: 1; 
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+    
+    /* Animation Flottement Infini */
+    animation: floatColumn 6s ease-in-out infinite;
+}
+
+/* On décale l'animation de la deuxième colonne */
+.logo-column19:nth-of-type(2) {
+    animation-delay: 1s; 
+    animation-direction: reverse;
+}
+
+@keyframes floatColumn {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* =========================================
+   LES CARTES LOGOS (INTERACTIVES)
+   ========================================= */
+.logo-card19 {
+    flex: 1;                 
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 20px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    /* Animation d'entrée (Pop) */
+    opacity: 0;
+    animation: popInCard 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Délais d'apparition en cascade */
+.logo-column19:nth-of-type(1) .logo-card19:nth-child(1) { animation-delay: 0.2s; }
+.logo-column19:nth-of-type(1) .logo-card19:nth-child(2) { animation-delay: 0.4s; }
+.logo-column19:nth-of-type(2) .logo-card19:nth-child(1) { animation-delay: 0.6s; }
+.logo-column19:nth-of-type(2) .logo-card19:nth-child(2) { animation-delay: 0.8s; }
+
+@keyframes popInCard {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Interaction au survol */
+.logo-card19:hover {
+    transform: scale(1.1); /* Zoom */
+    filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.2)); /* Ombre portée */
+    cursor: pointer;
+}
+
+.logo-card19 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    display: block;
+    transition: transform 0.3s;
+}
+
+/* =========================================
+   LES BOUTONS DE NAVIGATION (ANIMÉS)
+   ========================================= */
+.nav-btn19, .pause-btn19 {
+    color: #7e2720;
+    font-size: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100px; 
+    width: 80px;   
+    
+
+    user-select: none;
+    
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Effet au survol des boutons */
+.nav-btn19:hover {
+    transform: scale(1.4); /* Gros Zoom */
+    color: #7e2720; /* Rouge foncé */
+    text-shadow: 0px 0px 15px rgba(126, 39, 32, 0.6); /* Lueur */
+    animation: none;
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER L'ÉCRAN */
+    body.logos219 {
+        height: auto;           /* La hauteur s'adapte au contenu */
+        overflow-y: auto;       /* Réactive le défilement vertical */
+        display: block;         /* Annule le centrage Flexbox rigide du PC */
+    }
+
+    /* 2. REORGANISER L'INTERFACE */
+    .main-interface19 {
+        flex-direction: column; /* Empile les éléments verticalement */
+        height: auto;           /* Plus de hauteur fixe */
+        width: 100%;
+        gap: 50px;              /* Espace confortable entre les groupes */
+        padding: 40px 20px;
+    }
+
+    /* 3. COLONNES DE LOGOS */
+    .logo-column19 {
+        width: 100%;            /* Prend toute la largeur disponible */
+        gap: 30px;              /* Espace entre les logos */
+        height: auto;
+        
+        /* Marge pour éviter que les animations ne chevauchent les éléments suivants */
+        margin-bottom: 20px; 
+    }
+
+    /* 4. CARTES LOGOS */
+    .logo-card19 {
+        width: 100%;
+        max-width: 320px;       /* Largeur max pour l'esthétique */
+        margin: 0 auto;         /* Centrage */
+        
+        /* Hauteur fixe pour garantir que le logo a de la place */
+        height: 250px;          
+    }
+
+    /* 5. BOUTONS DE NAVIGATION */
+    .nav-btn19, .pause-btn19 {
+        width: 100%;            /* Zone de clic élargie au maximum */
+        height: auto;           
+        padding: 20px;
+        font-size: 60px;        /* Icônes agrandies */
+        margin: 10px 0;         /* Espacement vertical */
+        
+        /* Centrage du contenu */
+        justify-content: center;
+    }
+
+    /* Ajustement de l'effet de survol pour le tactile */
+    .nav-btn19:hover {
+        transform: scale(1.1);  /* Zoom plus léger */
+    }
+}

@@ -1,0 +1,211 @@
+/* =========================================
+   RESET ET CONFIGURATION GÉNÉRALE
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+/* RESET & BODY */
+body.affiches216 {
+    background-color: #f1ede4;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    overflow: hidden; /* Important pour les animations */
+    
+    /* Animation d'entrée globale */
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CONTENEUR PRINCIPAL */
+.gallery-container {
+    width: 100%;
+    max-width: 1600px; /* Largeur max */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    height: 100vh;
+}
+
+/* =========================================
+   GRILLE DES AFFICHES (ANIMÉE)
+   ========================================= */
+.posters-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 35px;
+    flex-grow: 1; /* Prend l'espace disponible */
+}
+
+/* STYLE DES IMAGES */
+.posters-grid img {
+    padding: 15px;
+    width: 30%;        /* Chaque affiche prend 30% de la largeur */
+    max-width: 450px;  /* Limite max */
+    height: auto;
+    object-fit: contain;
+    box-sizing: border-box;
+    display: block;
+    
+    /* ETAT INITIAL : Caché */
+    opacity: 0;
+    
+    /* DOUBLE ANIMATION :
+       1. popInImage : Arrivée dynamique (0.8s)
+       2. floatImage : Flottement infini (commence après l'arrivée)
+    */
+    animation: 
+        popInImage 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        floatImage 6s ease-in-out infinite;
+    
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* DÉCALAGES POUR L'EFFET CASCADE (Vague) */
+.posters-grid img:nth-child(1) { 
+    animation-delay: 0.2s, 1s; 
+}
+.posters-grid img:nth-child(2) { 
+    animation-delay: 0.4s, 1.2s; 
+}
+.posters-grid img:nth-child(3) { 
+    animation-delay: 0.6s, 1.4s; 
+}
+
+@keyframes popInImage {
+    from { opacity: 0; transform: scale(0.8) translateY(50px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* INTERACTION AU SURVOL */
+.posters-grid img:hover {
+    animation-play-state: paused; /* Pause le flottement */
+    transform: scale(1.08) translateY(-10px); /* Zoom + légère montée */
+    filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.3)); /* Ombre portée */
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* =========================================
+   CONTRÔLES (PLAYER)
+   ========================================= */
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    /* Arrive par le bas */
+    opacity: 0;
+    animation: slideUpControls 0.8s ease-out forwards 0.8s; /* Arrive à la fin */
+}
+
+@keyframes slideUpControls {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* BOUTONS GÉNÉRAUX */
+.control-btn {
+    font-size: 85px;
+    color: #7e2720;
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+    line-height: 1;
+    
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Effet au survol des flèches */
+.control-btn:not(.pause):hover {
+    transform: scale(1.3);
+    color: #7e2720;
+    text-shadow: 0px 0px 15px rgba(126, 39, 32, 0.6);
+}
+
+/* LE BOUTON PAUSE (Centre + Animation) */
+.pause {
+    font-weight: bold;
+    margin: 0 150px;
+    padding: 0 50px;      
+    cursor: default;
+    
+}
+
+@keyframes pulsePause {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* =========================================
+   RESPONSIVE MOBILE (< 900px)
+   ========================================= */
+@media screen and (max-width: 900px) {
+
+    /* 1. DÉBLOQUER LA STRUCTURE */
+    body.affiches216 {
+        height: auto;           /* La hauteur s'adapte au contenu */
+        overflow-y: auto;       /* Réactive le défilement vertical */
+        display: block;         /* Annule le centrage vertical rigide du PC */
+    }
+
+    .gallery-container {
+        height: auto;           /* Plus de hauteur fixe */
+        padding: 20px;
+        max-width: 100%;
+        display: block;
+    }
+
+    /* 2. EMPILER LES AFFICHES */
+    .posters-grid {
+        flex-direction: column; /* Les images passent les unes sous les autres */
+        gap: 60px;              /* Espace large pour éviter que le flottement ne superpose les images */
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .posters-grid img {
+        width: 85%;             /* Largeur confortable sur mobile */
+        max-width: 320px;
+        padding: 0;             /* On enlève le padding interne */
+    }
+
+    /* 3. ADAPTER LES CONTRÔLES */
+    .player-controls {
+        padding-bottom: 50px;   /* Marge en bas de page pour le confort */
+        flex-wrap: nowrap;      /* Force les boutons à rester sur une ligne */
+    }
+
+    .control-btn {
+        font-size: 60px;        /* Réduit la taille des flèches (85px -> 60px) */
+    }
+
+    /* CORRECTION CRITIQUE : MARGES DU BOUTON PAUSE */
+    /* Sur PC, la marge est de 150px. Sur mobile, cela ferait disparaître les flèches. */
+    .pause {
+        margin: 0 30px;         /* Réduction drastique (150px -> 30px) */
+        padding: 0;
+    }
+}
