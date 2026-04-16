@@ -48,8 +48,8 @@ body.index1 {
     box-shadow: 0px 0px 40px rgba(255, 255, 255, 0.6); 
     border-radius: 50%; /* Si votre photo est ronde. Sinon, supprimez cette ligne */
     
-    /* Animation douce */
-    animation: floatImage 5s ease-in-out infinite;
+
+    /*animation: floatImage 5s ease-in-out infinite;*/
 }
 @keyframes floatImage {
     0% { transform: translateY(0px); }
